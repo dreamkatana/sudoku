@@ -23,12 +23,12 @@ public class Main {
     private final static int BOARD_LIMIT = 9;
 
     public static void main(String[] args) {
-        final var positions = Stream.of(args)
+        final Map<String, String> positions = Stream.of(args)
                 .collect(toMap(
                         k -> k.split(";")[0],
                         v -> v.split(";")[1]
                 ));
-        var option = -1;
+        int option = -1;
         while (true){
             System.out.println("Selecione uma das opções a seguir");
             System.out.println("1 - Iniciar um novo Jogo");
@@ -43,15 +43,33 @@ public class Main {
             option = scanner.nextInt();
 
             switch (option){
-                case 1 -> startGame(positions);
-                case 2 -> inputNumber();
-                case 3 -> removeNumber();
-                case 4 -> showCurrentGame();
-                case 5 -> showGameStatus();
-                case 6 -> clearGame();
-                case 7 -> finishGame();
-                case 8 -> System.exit(0);
-                default -> System.out.println("Opção inválida, selecione uma das opções do menu");
+                case 1:
+                    startGame(positions);
+                    break;
+                case 2:
+                    inputNumber();
+                    break;
+                case 3:
+                    removeNumber();
+                    break;
+                case 4:
+                    showCurrentGame();
+                    break;
+                case 5:
+                    showGameStatus();
+                    break;
+                case 6:
+                    clearGame();
+                    break;
+                case 7:
+                    finishGame();
+                    break;
+                case 8:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opcao invalida, selecione uma das opcoes do menu");
+                    break;
             }
         }
     }
@@ -66,15 +84,15 @@ public class Main {
         for (int i = 0; i < BOARD_LIMIT; i++) {
             spaces.add(new ArrayList<>());
             for (int j = 0; j < BOARD_LIMIT; j++) {
-                var positionConfig = positions.get("%s,%s".formatted(i, j));
+                String positionConfig = positions.get(String.format("%s,%s", i, j));
                 if (positionConfig == null) {
                     // Se não há configuração específica para esta posição, criar um espaço vazio não fixo
-                    var currentSpace = new Space(0, false);
+                    Space currentSpace = new Space(0, false);
                     spaces.get(i).add(currentSpace);
                 } else {
-                    var expected = Integer.parseInt(positionConfig.split(",")[0]);
-                    var fixed = Boolean.parseBoolean(positionConfig.split(",")[1]);
-                    var currentSpace = new Space(expected, fixed);
+                    int expected = Integer.parseInt(positionConfig.split(",")[0]);
+                    boolean fixed = Boolean.parseBoolean(positionConfig.split(",")[1]);
+                    Space currentSpace = new Space(expected, fixed);
                     spaces.get(i).add(currentSpace);
                 }
             }
@@ -92,11 +110,11 @@ public class Main {
         }
 
         System.out.println("Informe a coluna que em que o número será inserido");
-        var col = runUntilGetValidNumber(0, 8);
+        int col = runUntilGetValidNumber(0, 8);
         System.out.println("Informe a linha que em que o número será inserido");
-        var row = runUntilGetValidNumber(0, 8);
+        int row = runUntilGetValidNumber(0, 8);
         System.out.printf("Informe o número que vai entrar na posição [%s,%s]\n", col, row);
-        var value = runUntilGetValidNumber(1, 9);
+        int value = runUntilGetValidNumber(1, 9);
         if (!board.changeValue(col, row, value)){
             System.out.printf("A posição [%s,%s] tem um valor fixo\n", col, row);
         }
@@ -109,9 +127,9 @@ public class Main {
         }
 
         System.out.println("Informe a coluna que em que o número será inserido");
-        var col = runUntilGetValidNumber(0, 8);
+        int col = runUntilGetValidNumber(0, 8);
         System.out.println("Informe a linha que em que o número será inserido");
-        var row = runUntilGetValidNumber(0, 8);
+        int row = runUntilGetValidNumber(0, 8);
         if (!board.clearValue(col, row)){
             System.out.printf("A posição [%s,%s] tem um valor fixo\n", col, row);
         }
@@ -123,10 +141,10 @@ public class Main {
             return;
         }
 
-        var args = new Object[81];
-        var argPos = 0;
+        Object[] args = new Object[81];
+        int argPos = 0;
         for (int i = 0; i < BOARD_LIMIT; i++) {
-            for (var col: board.getSpaces()){
+            for (List<Space> col: board.getSpaces()){
                 args[argPos ++] = " " + ((isNull(col.get(i).getActual())) ? " " : col.get(i).getActual());
             }
         }
@@ -155,7 +173,7 @@ public class Main {
         }
 
         System.out.println("Tem certeza que deseja limpar seu jogo e perder todo seu progresso?");
-        var confirm = scanner.next();
+        String confirm = scanner.next();
         while (!confirm.equalsIgnoreCase("sim") && !confirm.equalsIgnoreCase("não")){
             System.out.println("Informe 'sim' ou 'não'");
             confirm = scanner.next();
@@ -185,7 +203,7 @@ public class Main {
 
 
     private static int runUntilGetValidNumber(final int min, final int max){
-        var current = scanner.nextInt();
+        int current = scanner.nextInt();
         while (current < min || current > max){
             System.out.printf("Informe um número entre %s e %s\n", min, max);
             current = scanner.nextInt();
