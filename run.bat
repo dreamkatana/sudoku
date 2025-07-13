@@ -1,17 +1,17 @@
 @echo off
-REM Script simples para compilar e executar o jogo
+REM Simple script to compile and run the game
 
-echo Compilando o projeto Sudoku...
+echo Compiling the Sudoku project...
 javac -d . src/br/com/dio/Main.java src/br/com/dio/model/*.java src/br/com/dio/util/*.java
 
 if %errorlevel% neq 0 (
-    echo Erro na compilacao! Verifique o codigo.
+    echo Compilation error! Please check the code.
     pause
     exit /b 1
 )
 
 echo.
-echo Compilacao bem-sucedida! Iniciando o jogo...
+echo Compilation successful! Starting the game...
 echo.
 
 java br.com.dio.Main

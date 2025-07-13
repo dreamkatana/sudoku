@@ -1,18 +1,18 @@
-# 🎮 Jogo de Sudoku em Java
+# 🎮 Sudoku Game in Java
 
-Um jogo de Sudoku interativo desenvolvido em Java com interface de linha de comando. Este projeto implementa as regras clássicas do Sudoku com funcionalidades extras como sistema de dicas, contador de movimentos e cronômetro.
+An interactive Sudoku game developed in Java with command-line interface. This project implements classic Sudoku rules with extra features like hint system, move counter, and game timer.
 
-## 📋 Funcionalidades
+## 📋 Features
 
-- ✅ **Jogo de Sudoku completo** com validação de regras
-- 🎯 **Sistema de dicas** para ajudar o jogador
-- 📊 **Contador de movimentos** e cronômetro
-- 🎨 **Interface visual** com template ASCII do tabuleiro
-- 🔄 **Reset do jogo** preservando valores fixos
-- ✨ **Validação de entrada** robusta contra erros
-- 📈 **Sistema de status** do jogo (não iniciado, incompleto, completo)
+- ✅ **Complete Sudoku game** with rule validation
+- 🎯 **Hint system** to help the player
+- 📊 **Move counter** and timer
+- 🎨 **Visual interface** with ASCII board template
+- 🔄 **Game reset** preserving fixed values
+- ✨ **Robust input validation** against errors
+- 📈 **Game status system** (not started, incomplete, complete)
 
-## 🏗️ Estrutura do Projeto
+## 🏗️ Project Structure
 
 ```
 sudoku/
@@ -20,167 +20,166 @@ sudoku/
 │   └── br/
 │       └── com/
 │           └── dio/
-│               ├── Main.java                    # Classe principal com interface do usuário
+│               ├── Main.java                    # Main class with user interface
 │               ├── model/
-│               │   ├── Board.java               # Lógica do tabuleiro de Sudoku
-│               │   ├── Space.java               # Representa cada célula do tabuleiro
-│               │   └── GameStatusEnum.java      # Estados do jogo
+│               │   ├── Board.java               # Sudoku board logic
+│               │   ├── Space.java               # Represents each board cell
+│               │   └── GameStatusEnum.java      # Game states
 │               └── util/
-│                   └── BoardTemplate.java       # Template visual do tabuleiro
-├── sudoku.iml                                   # Arquivo de configuração do IntelliJ
-└── README.md                                    # Este arquivo
+│                   └── BoardTemplate.java       # Board visual template
+├── sudoku.iml                                   # IntelliJ configuration file
+└── README.md                                    # This file
 ```
 
-## 🚀 Como Executar
+## 🚀 How to Run
 
-### Pré-requisitos
+### Prerequisites
 
-- **Java 8** ou superior instalado
-- Terminal ou prompt de comando
+- **Java 8** or higher installed
+- Terminal or command prompt
 
-### Compilação e Execução
+### Compilation and Execution
 
-1. **Clone ou baixe o projeto**
+1. **Clone or download the project**
    ```bash
-   git clone <url-do-repositorio>
+   git clone <repository-url>
    cd sudoku
    ```
 
-2. **Compile o projeto**
+2. **Compile the project**
    ```bash
    javac -d . src/br/com/dio/Main.java src/br/com/dio/model/*.java src/br/com/dio/util/*.java
    ```
 
-3. **Execute o jogo**
+3. **Run the game**
    ```bash
    java br.com.dio.Main
    ```
 
-### Execução com Configuração Inicial (Opcional)
+### Execution with Initial Configuration (Optional)
 
-Você pode passar argumentos para pré-configurar posições do tabuleiro:
+You can pass arguments to pre-configure board positions:
 
 ```bash
 java br.com.dio.Main "0,0;5,true" "0,1;3,false" "1,1;7,true"
 ```
 
-**Formato dos argumentos:** `"linha,coluna;valor,fixo"`
-- `linha,coluna`: Coordenadas da posição (0-8)
-- `valor`: Número a ser colocado (1-9)
-- `fixo`: `true` se o valor não pode ser alterado, `false` caso contrário
+**Argument format:** `"row,column;value,fixed"`
+- `row,column`: Position coordinates (0-8)
+- `value`: Number to be placed (1-9)
+- `fixed`: `true` if value cannot be changed, `false` otherwise
 
-## 🎮 Como Jogar
+## 🎮 How to Play
 
-### Menu Principal
+### Main Menu
 
 ```
 =================================================
-           JOGO DE SUDOKU
+           SUDOKU GAME
 =================================================
-Selecione uma das opções a seguir:
+Select one of the following options:
 
-1 - Iniciar um novo Jogo
-2 - Colocar um novo número
-3 - Remover um número
-4 - Visualizar jogo atual
-5 - Verificar status do jogo
-6 - Limpar jogo
-7 - Finalizar jogo
-8 - Obter dica para posição
-9 - Sair
+1 - Start a new Game
+2 - Place a new number
+3 - Remove a number
+4 - View current game
+5 - Check game status
+6 - Clear game
+7 - Finish game
+8 - Exit
 =================================================
 ```
 
-### Instruções de Jogo
+### Game Instructions
 
-1. **Iniciar o jogo**: Escolha a opção 1 para começar uma nova partida
-2. **Adicionar números**: Use a opção 2 e informe coordenadas (0-8) e o número (1-9)
-3. **Remover números**: Use a opção 3 para limpar uma posição
-4. **Visualizar tabuleiro**: Opção 4 mostra o estado atual do jogo
-5. **Verificar status**: Opção 5 mostra estatísticas detalhadas
-6. **Obter dicas**: Opção 8 revela o número correto para uma posição
-7. **Finalizar**: Opção 7 verifica se o jogo foi completado corretamente
+1. **Start the game**: Choose option 1 to begin a new match
+2. **Add numbers**: Use option 2 and inform coordinates (0-8) and number (1-9)
+3. **Remove numbers**: Use option 3 to clear a position
+4. **View board**: Option 4 shows current game state
+5. **Check status**: Option 5 shows detailed statistics
+6. **Get hints**: Option 8 reveals correct number for a position
+7. **Finish**: Option 7 checks if game was completed correctly
 
-### Sistema de Coordenadas
+### Coordinate System
 
-- **Linhas e Colunas**: Numeradas de 0 a 8
-- **Formato**: `[coluna, linha]`
-- **Exemplo**: Posição `[0,0]` é o canto superior esquerdo
+- **Rows and Columns**: Numbered from 0 to 8
+- **Format**: `[column, row]`
+- **Example**: Position `[0,0]` is the top-left corner
 
-## 🏛️ Arquitetura
+## 🏛️ Architecture
 
-### Classes Principais
+### Main Classes
 
 #### `Main.java`
-- **Responsabilidade**: Interface do usuário e controle do fluxo do jogo
-- **Funcionalidades**: Menu interativo, validação de entrada, gestão de estado
+- **Responsibility**: User interface and game flow control
+- **Features**: Interactive menu, input validation, state management
 
 #### `Board.java`
-- **Responsabilidade**: Lógica do tabuleiro de Sudoku
-- **Métodos principais**:
-  - `changeValue()`: Altera valor de uma posição
-  - `clearValue()`: Remove valor de uma posição
-  - `hasErrors()`: Verifica se há erros no tabuleiro
-  - `gameIsFinished()`: Verifica se o jogo foi completado
-  - `getStatus()`: Retorna o status atual do jogo
+- **Responsibility**: Sudoku board logic
+- **Main methods**:
+  - `changeValue()`: Changes position value
+  - `clearValue()`: Removes position value
+  - `hasErrors()`: Checks for board errors
+  - `gameIsFinished()`: Checks if game is completed
+  - `getStatus()`: Returns current game status
 
 #### `Space.java`
-- **Responsabilidade**: Representa cada célula do tabuleiro
-- **Propriedades**:
-  - `actual`: Valor atual inserido pelo jogador
-  - `expected`: Valor correto da posição
-  - `fixed`: Se o valor é fixo (não pode ser alterado)
+- **Responsibility**: Represents each board cell
+- **Properties**:
+  - `actual`: Current value inserted by player
+  - `expected`: Correct position value
+  - `fixed`: If value is fixed (cannot be changed)
 
 #### `GameStatusEnum.java`
-- **Estados do jogo**:
-  - `NON_STARTED`: Jogo não iniciado
-  - `INCOMPLETE`: Jogo em andamento
-  - `COMPLETE`: Jogo completo
+- **Game states**:
+  - `NON_STARTED`: Game not started
+  - `INCOMPLETE`: Game in progress
+  - `COMPLETE`: Game complete
 
-## 📊 Funcionalidades Especiais
+## 📊 Special Features
 
-### Sistema de Estatísticas
-- **Contador de movimentos**: Rastreia quantos movimentos foram feitos
-- **Cronômetro**: Mede o tempo total de jogo
-- **Contador de espaços vazios**: Mostra quantas células ainda precisam ser preenchidas
+### Statistics System
+- **Move counter**: Tracks how many moves were made
+- **Timer**: Measures total game time
+- **Empty spaces counter**: Shows how many cells still need to be filled
 
-### Sistema de Dicas
-- Revela o valor correto para qualquer posição
-- Indica se um valor já inserido está correto ou incorreto
-- Identifica posições com valores fixos
+### Hint System
+- Reveals correct value for any position
+- Indicates if an already inserted value is correct or incorrect
+- Identifies positions with fixed values
 
-### Validação Robusta
-- Verifica entrada numérica válida
-- Valida coordenadas dentro do range (0-8)
-- Valida números do Sudoku (1-9)
-- Proteção contra valores não numéricos
+### Robust Validation
+- Checks valid numeric input
+- Validates coordinates within range (0-8)
+- Validates Sudoku numbers (1-9)
+- Protection against non-numeric values
 
-## 🛠️ Possíveis Melhorias Futuras
+## 🛠️ Possible Future Improvements
 
-- [ ] **Interface gráfica** com JavaFX ou Swing
-- [ ] **Diferentes níveis de dificuldade**
-- [ ] **Gerador automático de puzzles**
-- [ ] **Sistema de pontuação**
-- [ ] **Salvamento e carregamento de jogos**
-- [ ] **Múltiplos jogadores**
-- [ ] **Histórico de jogos**
+- [ ] **Graphical interface** with JavaFX or Swing
+- [ ] **Different difficulty levels**
+- [ ] **Automatic puzzle generator**
+- [ ] **Scoring system**
+- [ ] **Game save and load**
+- [ ] **Multiple players**
+- [ ] **Game history**
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📝 Licença
+## 📝 License
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+This project is under the MIT license. See the `LICENSE` file for more details.
 
-## 👨‍💻 Desenvolvedor
+## 👨‍💻 Developer
 
-Desenvolvido como parte dos estudos em Java e programação orientada a objetos.
+Developed as part of Java studies and object-oriented programming.
 
 ---
 
-**Divirta-se jogando Sudoku! 🎉**
+**Have fun playing Sudoku! 🎉**

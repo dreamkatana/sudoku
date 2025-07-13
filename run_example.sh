@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Script de exemplo para executar o jogo com configurações pré-definidas
-# Para Windows, use: java br.com.dio.Main "argumentos..."
+# Example script to run the game with predefined configurations
+# For Windows, use: java br.com.dio.Main "arguments..."
 
-echo "Compilando o projeto..."
+echo "Compiling the project..."
 javac -d . src/br/com/dio/Main.java src/br/com/dio/model/*.java src/br/com/dio/util/*.java
 
-echo "Executando o jogo com algumas posições pré-configuradas..."
+echo "Running the game with some predefined positions..."
 
-# Exemplo de configuração:
-# Formato: "linha,coluna;valor,fixo"
-# linha,coluna: coordenadas (0-8)
-# valor: número do sudoku (1-9, ou 0 para vazio)
-# fixo: true/false (se pode ser alterado pelo jogador)
+# Configuration example:
+# Format: "row,column;value,fixed"
+# row,column: coordinates (0-8)
+# value: sudoku number (1-9, or 0 for empty)
+# fixed: true/false (if it can be changed by player)
 
 java br.com.dio.Main \
   "0,0;5,true" \
@@ -25,8 +25,8 @@ java br.com.dio.Main \
   "2,1;9,true" \
   "2,2;8,false"
 
-# Este exemplo criará um tabuleiro com:
-# - Posição [0,0]: número 5 (fixo)
-# - Posição [0,1]: número 3 (editável)  
-# - Posição [1,1]: número 9 (fixo)
-# - Outras posições vazias (editáveis)
+# This example will create a board with:
+# - Position [0,0]: number 5 (fixed)
+# - Position [0,1]: number 3 (editable)  
+# - Position [1,1]: number 9 (fixed)
+# - Other positions empty (editable)
